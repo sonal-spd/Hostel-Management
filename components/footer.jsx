@@ -70,7 +70,7 @@ const Footer = () => {
             className="text-gray-600"
           >
             <div className="justify-center align-center">
-              <h3>Second Home</h3>
+              <h2>Second Home</h2>
               <ul>
                 <li>
                   <Link href="/about">
