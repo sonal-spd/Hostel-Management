@@ -12,7 +12,7 @@ const Header = () => {
       <div className="mx-auto py-4">
         <div className="md:flex md:items-center md:justify-between">
           <div className="flex justify-between items-center px-8 md:px-0">
-            <div className="hidden md:block" style={{position: "relative", left:"90vw"}}>
+            <div className="hidden md:block" style={{position: "relative", left:"85vw"}}>
               <LeftMenu/>
             </div>
 
