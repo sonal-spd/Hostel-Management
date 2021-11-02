@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Stick+No+Bills&display=swap');
+
+.notice{
+    background-color: #fff;
+    margin: 0px auto;
+    width: 75%;
+    text-align: center;
+}
+.notice > h1{
+    font-size: 3.2rem;
+    font-family: "Stick No Bills";
+}
