@@ -172,6 +172,21 @@ const LeftMenu = () => {
                   </a>
                 </Link>
               </li>
+          <li
+                style={{ borderBottom: "1px solid #A0AEC0" }}
+                className="pt-5 pb-5"
+              >
+                <Link href="/login">
+                  <a
+                    style={{ fontSize: 18 }}
+                    className="flex align-center disable"
+                    onClick={onClose}
+                  >
+                    
+                    LogIn
+                  </a>
+                </Link>
+              </li>
         </ul>
       </Drawer>
     </div>
