@@ -16,7 +16,7 @@ const Login = (props) => {
     };
     
   return (
-    <>
+    <div style={{marginTop: "20vh"}}>
       <div className="bg-gray-200 w-full max-w-sm rounded-lg shadow-md overflow-hidden mx-auto my-auto">
         <div className="py-2 px-6">
           <h3 className="mt-1 text-center font-medium text-gray-600 dark:text-gray-200 text-2xl">
@@ -35,7 +35,8 @@ const Login = (props) => {
             }}
             onFinish={onFinish}
           >
-            <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
+          <p>Username</p>
+          <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
             <Form.Item
               name="username"
               rules={[
@@ -45,8 +46,9 @@ const Login = (props) => {
                 },
               ]}
             >
-              <Input placeholder="Username" className="mt-2 py-2" />
+            <Input placeholder="Username" className="mt-2 py-2" />
             </Form.Item>
+            <p>Password</p>
             <Form.Item
               name="password"
               rules={[
@@ -62,6 +64,7 @@ const Login = (props) => {
                 className="mt-2 py-2"
               />
             </Form.Item>
+            <p style={{color:"purple"}}>Forgot Password</p>
             <Form.Item>
               <Row justify="center">
                 <Col span={6} justify="center">
@@ -79,7 +82,7 @@ const Login = (props) => {
         </div>
          
       </div>
-    </>
+    </div>
   );
 };
 

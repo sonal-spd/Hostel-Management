@@ -50,8 +50,8 @@ const Footer = () => {
             className="text-gray-600 app-badges"
           >
             <div className="justify-center align-center">
-              <div className="app-links">
-                  <Image
+              <div className="app-links" >
+                  <Image style={{backgroundColor: "#fff", borderRadius: "30%"}}
                     preview={false}
                     width={150}
                     src="/logo.png"
@@ -74,7 +74,7 @@ const Footer = () => {
               <ul>
                 <li>
                   <Link href="/about">
-                    <h2>H.O.U.R. (Hour of Ur Resident) was....<a>Readmore</a></h2>
+                    <h2>H.O.U.R. (Hour of Ur Resident) is....<a>Readmore</a></h2>
                   </Link>
                 </li>
                 

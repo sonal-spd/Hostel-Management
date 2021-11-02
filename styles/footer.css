@@ -4,12 +4,11 @@
 }
 
 .footer-web {
-  border-top: 5px solid #000;
-  background-color: #4f4f4f;
+  background-color: #C4C4C4;
   padding-left: 1.7rem;
   padding-right: 1.7rem;
-  margin-top: 2.5rem;
-  padding-top: 1rem;
+  /* margin-top: 2.5rem; */
+  padding-top: 1.5rem;
 }
 
 .blackcard {
@@ -27,14 +26,14 @@
   font-weight: 800;
   margin-bottom: 20px;
   letter-spacing: 0.8px;
-  color: #f1f1f1;
+  color: #000;
 }
 .footer-web h2 {
   font-size: 20px;
   font-weight: 500;
   margin-bottom: 20px;
   letter-spacing: 0.8px;
-  color: #f1f1f1;
+  color: #000;
 }
 
 .footer-list li {
@@ -45,7 +44,7 @@
 }
 
 .footer-item ul {
-  color: #f1f1f1 !important;
+  color: #000 !important;
 }
 
 .footer-item ul li {
@@ -53,7 +52,7 @@
 }
 
 .footer-item ul li a {
-  color: #f1f1f1 !important;
+  color: black !important;
 }
 
 .ant-input-affix-wrapper {
@@ -62,8 +61,8 @@
 }
 
 .copyright {
-  background-color: #4f4f4f;
-  color: white;
+  background-color: #C4C4C4;
+  color: black;
 }
 
 .footer-web-row {
@@ -71,7 +70,7 @@
 }
 
 .social-links {
-  color: #f1f1f1;
+  color: #000;
 }
 
 
@@ -79,6 +78,11 @@
 @media (max-width: 768px) {
   h2 {
     text-align: center;
+  }
+
+  .app-links{
+    width: 150px;
+    margin: 0px auto;
   }
 
   .ant-row {

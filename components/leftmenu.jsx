@@ -62,8 +62,8 @@ const LeftMenu = () => {
         <FiAlignLeft size={30} />
       </button>
 
-      <Drawer
-        placement="left"
+      <Drawer style={{backgroundColor: "#C5F1C9"}}
+        placement="right"
         closable={false}
         onClose={onClose}
         width={getWidth()}
@@ -80,7 +80,21 @@ const LeftMenu = () => {
           className="h-4 w-4 mb-4 cursor-pointer float-right"
           onClick={onClose}
         />
-        <ul className="sidebar flex flex-col h-full">
+        <ul className="sidebar flex flex-col h-full" >
+        <li
+                style={{ borderBottom: "1px solid #A0AEC0" }}
+                className="pt-5 pb-5"
+              >
+                <Link href="/profile">
+                  <a
+                    style={{ fontSize: 18 }}
+                    className="flex align-center"
+                    onClick={onClose}
+                  >
+                    Profile
+                  </a>
+                </Link>
+          </li>
           
           <li
             style={{ borderBottom: "1px solid #A0AEC0" }}
@@ -143,23 +157,7 @@ const LeftMenu = () => {
             </Link>
           </li>
           
-            
-                    
-              <li
-                style={{ borderBottom: "1px solid #A0AEC0" }}
-                className="pt-5 pb-5"
-              >
-                <Link href="/profile">
-                  <a
-                    style={{ fontSize: 18 }}
-                    className="flex align-center"
-                    onClick={onClose}
-                  >
-                    Profile
-                  </a>
-                </Link>
-              </li>
-              <li
+          <li
                 style={{ borderBottom: "1px solid #A0AEC0" }}
                 className="pt-5 pb-5"
               >
