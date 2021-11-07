@@ -1,14 +1,8 @@
 import { Carousel, Col, Layout, Row } from "antd";
 
-import { BiArrowToLeft, BiArrowToRight } from "react-icons/bi";
 import img1 from "../public/bibifatimahall.jpg"
 const AboutContent = () => {
     const { Content } = Layout;
-
-    
-   
-      
-
    
     return (
         <>
