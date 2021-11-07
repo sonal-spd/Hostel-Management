@@ -1,11 +1,7 @@
-import { Carousel,Image, Col, Layout, Row } from "antd";
+import { Carousel, Col, Layout, Row } from "antd";
 
 import { BiArrowToLeft, BiArrowToRight } from "react-icons/bi";
-import img1  from  "../public/bibifatimahall.jpg";
-import img2  from  "../public/IndiraGandhiHall.jpg";
-import img3  from  "../public/Abdullahhall/BiAmma_AH.jpg";
-import img4  from  "../public/Abdullahhall/SultanJahan_AH.jpg";
-import img5  from  "../public/Abdullahhall/AbdullahHall.jpg";
+import img1 from "../public/bibifatimahall.jpg"
 const AboutContent = () => {
     const { Content } = Layout;
 
@@ -13,15 +9,7 @@ const AboutContent = () => {
    
       
 
-    const renderImages = () => {
-        return images.map((imageUrl, index) => {
-          return (
-            <div key={`image_${index}`}>
-              <Image preview={false} src={imageUrl} className="w-100" height={467} />
-            </div>
-          );
-        });
-      };
+   
     return (
         <>
             <Content className="about pb-20">
@@ -40,7 +28,7 @@ const AboutContent = () => {
                         md={16}
                         lg={12}
                         xl={12}
-                        className="md:mr-8 text-gray-600 ab-text"
+                        className="md:mr-8 text-gray-600 text-xl"
                     >
                         <p className="text-base mt-6 md:pr-12 md:mt-8">
                             H.O.U.R  (House Of Ur Resident) was born out of an idea of
@@ -63,22 +51,9 @@ const AboutContent = () => {
                         justify="center"
                         className="items-center pt-10 ab-img"
                     >
-                        <Carousel
-                            autoplaySpeed={1500}
-                            prevArrow={<BiArrowToLeft color={"red"} />}
-                            nextArrow={<BiArrowToRight color={"red"} />}
-                            arrows={true}
-                            dotPosition={"bottom"}
-                            autoplay={true}
-                            className="md:w-60 w-56"
-                        >
-                            <div><Image preview={false} src={img1} className="w-100" height={467} /></div>
-                            <div><Image preview={false} src={img2} className="w-100" height={467} /></div>
-                            <div><Image preview={false} src={img3} className="w-100" height={467} /></div>
-                            <div><Image preview={false} src={img4} className="w-100" height={467} /></div>
-                            <div><Image preview={false} src={img5} className="w-100" height={467} /></div>
-                            
-                        </Carousel>
+                        
+                            <div><img preview={true} src={img1} width={500} height={467} /></div>
+                         
                     </Col>
                 </Row>
 
