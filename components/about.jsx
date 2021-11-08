@@ -1,6 +1,4 @@
 import { Carousel, Col, Layout, Row } from "antd";
-
-import img1 from "../public/bibifatimahall.jpg"
 const AboutContent = () => {
     const { Content } = Layout;
    
@@ -22,7 +20,7 @@ const AboutContent = () => {
                         md={16}
                         lg={12}
                         xl={12}
-                        className="md:mr-8 text-gray-600 text-xl"
+                        className="md:mr-8 text-gray-600 text-2xl"
                     >
                         <p className="text-base mt-6 md:pr-12 md:mt-8">
                             H.O.U.R  (House Of Ur Resident) was born out of an idea of
@@ -46,7 +44,7 @@ const AboutContent = () => {
                         className="items-center pt-10 ab-img"
                     >
                         
-                            <div><img preview={true} src={img1} width={500} height={467} /></div>
+                            <div><img preview={true} src="https://api.amu.ac.in/storage//images/nonac/10096/1607770473_bibi.jpg" width={500} height={467} /></div>
                          
                     </Col>
                 </Row>

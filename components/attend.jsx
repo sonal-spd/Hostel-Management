@@ -7,7 +7,7 @@ const Attendance = () => {
 
     return (
         <>
-            <div className="site-calendar-demo-card"
+            <div className="site-calendar-demo-card flex items-center"
                 style={{
                     width: "300px",
                     border: "1px solid #f0f0f0",

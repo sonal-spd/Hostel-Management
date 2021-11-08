@@ -12,12 +12,12 @@ if(process.env.NODE_ENV === 'production'){
     app.use(express.static(path.join(__dirname, "Hostel-Management/build")));
 }
 
-const noticeApi = require("./routes/notice");
-const complainApi = require("./routes/complain");
-const leaveApi = require("./routes/leave");
-const facultyApi = require("./routes/faculty");
-const profileApi = require("./routes/profile");
-const attendanceApi = require("./routes/attendance");
+const noticeApi = require("../pages/api/notice");
+const complainApi = require("../pages/api/complain");
+const leaveApi = require("../pages/api/leave");
+const facultyApi = require("../pages/api/faculty");
+const profileApi = require("../pages/api/profile");
+const attendanceApi = require("../pages/api/attendance");
 
 app.use('/api/notice', noticeApi);
 app.use('/api/complain', complainApi);

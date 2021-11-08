@@ -1,19 +1,24 @@
 import { Button, Form, Input, message, Row, Col } from "antd";
 import { csrfToken, signIn } from "next-auth/client";
+import { LoginUser } from "./auth";
+import { useDispatch } from "react-redux";
 const Login = (props) => {
- 
-
+  
+  
   const onFinish = async (values) => {
+    
     try {
       const vals = {
-        login: values.username.trim(),
+        name: values.username.trim(),
         password: values.password,
-      }
+      };
+      const userData = await dispatch(LoginUser(vals));
     }
-     catch (err) {
-        message.error(err.message);
-      }
-    };
+   catch (err) {
+    message.error(err.message);
+  }
+  };
+  
     
   return (
     <div style={{marginTop: "20vh"}}>
@@ -46,7 +51,7 @@ const Login = (props) => {
                 },
               ]}
             >
-            <Input placeholder="Username" className="mt-2 py-2" />
+            <Input placeholder="Username" className="mt-2 py-2"  />
             </Form.Item>
             <p>Password</p>
             <Form.Item
