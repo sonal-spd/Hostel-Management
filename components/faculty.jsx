@@ -1,9 +1,24 @@
-import { Row, Col, Typography, Image } from "antd";
+import { Row, Col, Typography, Image, message } from "antd";
+import { useState } from "react";
+import { getToken } from "./auth";
 
 function Faculty() {
 
     const { Text } = Typography;
-
+    const token = getToken();
+    const [faculty,setfaculty] = useState()
+    useEffect(() => 
+        {
+            axios.get('http://localhost:5000/api/faculty',{
+                headers : {
+                    "Authorization" : `Bearer ${token}`
+                }
+            }).then(res=>{
+                setfaculty(res.data);
+                
+            }).catch(err=>message.error(err));
+        }
+    , [token]);
     return (
         <div className="h-auto mt-10">
 
@@ -43,17 +58,17 @@ function Faculty() {
                 >
                     <div className='pb-6' >
                         <Image
-                            src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Pierre-Person.jpg"
+                            src={faculty.fac_photo}
                             
                             height = {300}
                         />
-                        <Row className='flex items-center text-2xl' span={6}>Provost</Row>
-                        <Row className='flex items-center ' span = {6}>Dhanush</Row>
+                        <Row className='flex items-center text-2xl' span={6}>{faculty.designation}</Row>
+                        <Row className='flex items-center ' span = {6}>{faculty.fac_name}</Row>
                         <Row className='flex items-center ' span = {6}>
-                            test@test.com
+                            {faculty.fac_email}
                         </Row>
                         <Row className='flex items-center' span = {6}>
-                            Phone No. - 4588568821
+                            {faculty.fac_contact}
                         </Row>
 
 

@@ -1,25 +1,41 @@
 
 import { Button, Col, Input, Row, Typography, Form, message, DatePicker } from "antd";
 import React from "react";
-
+import { getToken } from "./auth";
 
 export default function Leave() {
     const { Text } = Typography;
     const [form] = Form.useForm();
+    const [Reason, setReason] = useState("");
+    const [Address, setAddress] = useState("");
+    const [Leave, setLeave] = useState("");
+    const [Arrival, setArrival] = useState("");
 
-    const onFinish = async (values) => {
+    const onFinish = e => {
+        const accessToken = getToken()
+        e.preventDefault();
         try {
-            console.log(values);
-
+            const body = { Reason, Address, Leave, Arrival };
+            const response = fetch("http://localhost:5000/api/leave", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${accessToken}`
+                },
+                body: JSON.stringify(body)
+            });
+            console.log(body);
             message.success("We will get back to you as soon as possible!", 5)
-        }
-        catch (err) {
+        } catch (error) {
+            console.error(error);
             message.error("There was some error, while posting your request", 2);
+
         }
         finally {
             form.resetFields();
         }
     }
+
     const onChange = async (date, dateString) => {
         console.log(date, dateString);
     };
@@ -137,38 +153,38 @@ export default function Leave() {
                             name="leave"
                             rules={[{ required: true, message: "Please enter your Leave Date!" }]}
                         >
-                            
-                                <DatePicker className="bg-white" 
+
+                            <DatePicker className="bg-white"
                                 style={{
                                     height: 56,
                                     marginBottom: 14,
                                     borderBottom: "2px solid #A0AEC0",
                                     borderRadius: "15px",
                                 }}
-                                placeholder= "Leave Date"
+                                placeholder="Leave Date"
                                 onChange={onChange} />
-                            
+
                         </Form.Item>
                         <Form.Item
                             name="arrival"
                             rules={[{ required: true, message: "Please enter your Leave Date!" }]}
                         >
-                                <DatePicker className="bg-white" 
+                            <DatePicker className="bg-white"
                                 style={{
                                     height: 56,
                                     marginBottom: 14,
                                     borderBottom: "2px solid #A0AEC0",
                                     borderRadius: "15px",
                                 }}
-                                placeholder= "Arrival Date"
+                                placeholder="Arrival Date"
                                 onChange={onChange} />
-                           
+
                         </Form.Item>
                         <Form.Item>
                             <Button
                                 type="primary"
                                 htmlType="submit"
-                                style={{ height: 66, marginTop: 24, width: 126, borderRadius: "10px"}}
+                                style={{ height: 66, marginTop: 24, width: 126, borderRadius: "10px" }}
 
                             >
                                 Submit

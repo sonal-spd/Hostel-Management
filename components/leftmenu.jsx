@@ -18,7 +18,10 @@ const LeftMenu = () => {
   const onClose = () => {
     setVisible(false);
   };
-
+  const handleLogout = () => {
+    removeUserSession();
+    Router.push('/login');
+}
   const allFalse = () => {
     setXs(false);
     setSm(false);
@@ -179,14 +182,14 @@ const LeftMenu = () => {
                 style={{ borderBottom: "1px solid #A0AEC0" }}
                 className="pt-5 pb-5"
               >
-                <Link href="/login">
+                <Link >
                   <a
                     style={{ fontSize: 18 }}
                     className="flex align-center disable"
-                    onClick={onClose}
+                    onClick={handleLogout}
                   >
                     
-                    LogIn
+                    Log Out
                   </a>
                 </Link>
               </li>

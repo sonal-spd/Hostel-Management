@@ -1,12 +1,32 @@
-import axios from "axios";
+// import { asyncLocalStorage } from "./localStorage";
+export function getUser() {
+  if (typeof window !== 'undefined'){
+  const userStr = window.localStorage.getItem("user");
+  console.log(userStr);
+  
+  if(userStr) return JSON.parse(userStr);
+  else return null;
+  }
+}
 
+export function getToken() {
+  if (typeof window !== 'undefined'){
+  
+  return window.localStorage.getItem("token") || null;
+  }
+}
 
-export const LoginUser = async (username,password) => {
-    const accessToken = await axios.post("http://localhost:5000/api/users/login",{username,password});
-    const res = await fetch("http://localhost:5000/api/users/login", {
-        headers: {
-          authorization: `Bearer ${accessToken}`,
-        },
-      });
-      return res.json();
-    }
+export function setUserSession(token,user) {
+  if (typeof window !== 'undefined'){
+    
+  window.localStorage.setItem("token",token);
+  window.localStorage.setItem("user",JSON.stringify(user));
+  }
+}
+
+export function removeUserSession() {
+  if (typeof window !== 'undefined'){
+  window.localStorage.removeItem("token");
+  window.localStorage.removeItem("user");
+  }
+}

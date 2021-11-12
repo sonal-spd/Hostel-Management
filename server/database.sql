@@ -18,32 +18,30 @@ CREATE TABLE notice (
 CREATE TABLE complain_applications (
     application_date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     enrollment_no VARCHAR(10),
-    hostel_id VARCHAR(10),
-    app_reason VARCHAR(200),
+    app_reason VARCHAR(200) NOT NULL,
+    application_status BOOLEAN DEFAULT false,
     PRIMARY KEY(application_date,enrollment_no),
-    CONSTRAINT fk_hostel FOREIGN KEY(hostel_id) REFERENCES hostel_details(hostel_id),
     CONSTRAINT fk_enrollment FOREIGN KEY(enrollment_no) REFERENCES hostel_resident(enrollment_no)
 );
 
 CREATE TABLE leave_application(
     application_date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     enrollment_no VARCHAR(10),
-    hostel_id VARCHAR(10),
     address_ VARCHAR(80) NOT NULL,
     reason VARCHAR(100) NOT NULL,
     leave_date DATE NOT NULL,
     arrival_date DATE NOT NULL,
+    application_status BOOLEAN DEFAULT false,
     PRIMARY KEY(application_date, enrollment_no),
-    CONSTRAINT fk_hostel FOREIGN KEY(hostel_id) REFERENCES hostel_details(hostel_id),
     CONSTRAINT fk_enrollment FOREIGN KEY(enrollment_no) REFERENCES hostel_resident(enrollment_no)
 );
 
--- CREATE TABLE student_attendance(
---     enrollment_no PRIMARY KEY,
---     hostel_id VARCHAR(10),
---     attend_days INT NOT NULL,
---     CONSTRAINT fk_hostel FOREIGN KEY(hostel_id) REFERENCES hostel_details(hostel_id)
--- );
+ CREATE TABLE student_attendance(
+     enrollment_no VARCHAR(10) PRIMARY KEY,
+     hostel_id VARCHAR(10),
+     attend_days INT NOT NULL,
+     CONSTRAINT fk_hostel FOREIGN KEY(hostel_id) REFERENCES hostel_details(hostel_id)
+ );
 
 CREATE TABLE attendance(
     attend_date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
@@ -57,9 +55,9 @@ CREATE TABLE faculty(
     hostel_id VARCHAR(10) NOT NULL,
     designation VARCHAR(30) NOT NULL,
     fac_photo VARCHAR(30),
-    fac_email VARCHAR(30),
-    fac_name VARCHAR(30),
-    fac_contactNo INT,
+    fac_email VARCHAR(30) NOT NULL,
+    fac_name VARCHAR(30) NOT NULL,
+    fac_contactNo BIGINT NOT NULL,
     CONSTRAINT fk_hostel FOREIGN KEY(hostel_id) REFERENCES hostel_details(hostel_id)
 );
 
@@ -67,20 +65,24 @@ CREATE TABLE proctor_team(
     enrollment_no VARCHAR(10),
     hostel_id VARCHAR(10) NOT NULL,
     designation VARCHAR(30) NOT NULL,
-    fac_photo VARCHAR(30),
-    fac_email VARCHAR(30),
-    fac_name VARCHAR(30),
-    fac_contactNo INT,
+    fac_photo VARCHAR(200)  NOT NULL UNIQUE,
+    fac_email VARCHAR(30) UNIQUE,
+    fac_name VARCHAR(30) NOT NULL,
+    fac_contactNo BIGINT UNIQUE,
     PRIMARY KEY(enrollment_no,hostel_id),
     CONSTRAINT fk_hostel FOREIGN KEY(hostel_id) REFERENCES hostel_details(hostel_id),
-    CONSTRAINT fk_Sid FOREIGN KEY(enrollment_no) REFERENCES hostel_resident(enrollment_no)
+    CONSTRAINT fk_Sid FOREIGN KEY(enrollment_no) REFERENCES hostel_resident(enrollment_no),
+    CONSTRAINT fk_photo FOREIGN KEY(fac_photo) REFERENCES hostel_resident(resident_image),
+    CONSTRAINT fk_email FOREIGN KEY(fac_email) REFERENCES hostel_resident(email),
+    CONSTRAINT fk_contactno FOREIGN KEY(fac_contactNo) REFERENCES hostel_resident(contact)
 );
+
 
 CREATE TABLE hostel_resident(
     enrollment_no VARCHAR(10) PRIMARY KEY,
     course VARCHAR(30),
     faculty_no VARCHAR(10) UNIQUE,
-    hostel_id VARCHAR(10),
+    hostel_id VARCHAR(10) NOT NULL,
     resident_name VARCHAR(30) NOT NULL,
     resident_address VARCHAR(80) NOT NULL,
     resident_image VARCHAR(200) NOT NULL UNIQUE,
@@ -90,54 +92,15 @@ CREATE TABLE hostel_resident(
     CONSTRAINT fk_hostel FOREIGN KEY(hostel_id) REFERENCES hostel_details(hostel_id)
 );
 
--- CREATE DATABASE Profile;
-
--- CREATE TABLE user(
---     enrollment_no VARCHAR(10) PRIMARY KEY,
---     faculty_roll VARCHAR(10),
---     hostel_id VARCHAR(10),
---     contact INT,
---     email VARCHAR(30),
---     student_room INT,
---     hostel_name VARCHAR(30)
---     semester INT,
---     address VARCHAR(50)
--- );
-
--- CREATE TABLE attendance(
---     enrollment_no VARCHAR(10),
---     hostel_id VARCHAR(10),
---     student_room INT,
---     attend_date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
---     CONSTRAINT fk_Sid FOREIGN KEY(enrollment_no, hostel_id) REFERENCES user,
---     PRIMARY KEY(enrollment_no, student_room)
--- );
-
--- CREATE TABLE complain_applications (
---     application_date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
---     enrollment_no VARCHAR(10),
---     hostel_id VARCHAR(10),
---     application_type VARCHAR(30) NOT NULL,
---     applicant_room INT NOT NULL,
---     app_subject VARCHAR(30) NOT NULL,
---     app_body VARCHAR(100) NOT NULL,
---     PRIMARY KEY(application_date,enrollment_no),
---     CONSTRAINT fk_hostel FOREIGN KEY(hostel_id) REFERENCES user(hostel_id),
---     CONSTRAINT fk_enrollment FOREIGN KEY(enrollment_no) REFERENCES user(enrollment_no)
--- );
-
--- CREATE TABLE leave_application(
---     application_date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
---     enrollment_no VARCHAR(10),
---     hostel_id VARCHAR(10),
---     address_ VARCHAR(50),
---     reason VARCHAR(50),
---     leave_date VARCHAR(20),
---     arrival_date VARCHAR(20),
---     PRIMARY KEY(application_date, enrollment_no),
---     CONSTRAINT fk_hostel FOREIGN KEY(hostel_id) REFERENCES hostel_details(hostel_id),
---     CONSTRAINT fk_enrollment FOREIGN KEY(enrollment_no) REFERENCES hostel_resident(enrollment_no)
--- );
+INSERT INTO hostel_details VALUES('BAN101','Begum Azeezun Nisha','Aligarh 202001','https://api.amu.ac.in/storage//images/10268/slider/1608205913_b2.jpg');
+INSERT INTO notice(notice_headline,hostel_id,notice_file) VALUES('Holiday Regarding Deshahra 2021','BAN101','https://api.amu.ac.in/storage//file/10106/notice-and-circular/1634021083.pdf');
+INSERT INTO notice(notice_headline,hostel_id,notice_file) VALUES('Holiday Regarding Deepavali 2021','BAN101','https://api.amu.ac.in/storage//file/10106/notice-and-circular/1635487773.pdf');
+INSERT INTO hostel_resident VALUES('GH4567','physics','20PHB409','BAN101','sanam','Luckhnow','https://www.teahub.io/photos/full/301-3011066_11-111594-indian-beautiful-girl-images-wallpaper-pictures.jpg','23','7634512879','sanam.malik@gmai.com');
+INSERT INTO leave_application(enrollment_no,address_,reason,leave_date,arrival_date) VALUES('GH4567','Rifa Palace','Deepavali','2021-11-01','2021-11-15');
+INSERT INTO complain_applications(app_reason,enrollment_no) VALUES(' My room is out of the range of wifi connection. So hereby I am requesting the staff committe of the hostel to take a look into this issue.','GH4567');
+INSERT INTO faculty VALUES('SR3421','BAN101','provost','','test@test.com','dhanush','4588568821');
+INSERT INTO proctor_team VALUES('GH4567','BAN101','headgirl','https://www.teahub.io/photos/full/301-3011066_11-111594-indian-beautiful-girl-images-wallpaper-pictures.jpg','sanam.malik@gmai.com','sanam','7867567329');
+INSERT INTO attendance(enrollment_no) VALUES('GH4567');
 
 -- <!DOCTYPE html>
 -- <html>

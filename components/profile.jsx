@@ -1,13 +1,22 @@
-import { Row,Col,Typography, Image} from "antd";
+import { Row, Col, Typography,Button , Image } from "antd";
+import { getUser,removeUserSession } from "./auth";
+import Router from "next/router";
 
-function Faculty() {
-    const {Text} = Typography;
+function Profile(props) {
+    const { Text } = Typography;
+    
+    const user = getUser();
+    console.log(user)
+    const onFinish = () => {
+        removeUserSession();
+        Router.push('/login');
+    }
     return (
         <div className='h-auto mt-10'>
             <Row
                 className="w-full bg-fixed bg-cover bg-no-repeat bg-center relative"
                 style={{
-                    
+
                     height: "40vh",
                     backgroundSize: "cover",
                     filter: "brightness(50%)",
@@ -39,12 +48,10 @@ function Faculty() {
                 >
                     <div className='pb-6' dir='ltr'>
                         <Image
-                            src="https://www.teahub.io/photos/full/301-3011066_11-111594-indian-beautiful-girl-images-wallpaper-pictures.jpg"
-                            width = {200}
-                            height = {300}
+                            src={user?.resident_image}
+                            width={200}
+                            height={300}
                         />
-
-
 
                     </div>
                 </Col>
@@ -52,34 +59,45 @@ function Faculty() {
 
             </Row>
             <Row justify="center text-2xl">
-                    
-                        <Col span = {12}>
-                            <Row >Name</Row>
-                            <Row >Enrollment No.</Row>
-                            <Row >Course</Row>
-                            <Row >Faculty No.</Row>
-                            <Row >Hostel Id</Row>
-                            <Row >Room No.</Row>
-                            <Row >Address</Row>
-                            <Row >Email</Row>
-                            <Row >Contact No.</Row>
-                        </Col>
-                        <Col span={12}>
-                            <Row>Sanam</Row>
-                            <Row>GH4567</Row>
-                            <Row>Physics</Row>
-                            <Row>20PHB409</Row>
-                            <Row>BAN101</Row>
-                            <Row>23</Row>
-                            <Row>Lucknow</Row>
-                            <Row>sanam.malik@gmai.com</Row>
-                            <Row>7634512879</Row>
-                        </Col>
-                        
-                   
+
+                <Col span={10} justify="center">
+                    <Row >Name</Row>
+                    <Row >Enrollment No.</Row>
+                    <Row >Course</Row>
+                    <Row >Faculty No.</Row>
+                    <Row >Hostel Id</Row>
+                    <Row >Room No.</Row>
+                    <Row >Address</Row>
+                    <Row >Email</Row>
+                    <Row >Contact No.</Row>
+                </Col>
+                <Col span={12}>
+                    <Row>{user?.resident_name}</Row>
+                    <Row>{user?.enrollment_no}</Row>
+                    <Row>{user?.course}</Row>
+                    <Row>{user?.faculty_no}</Row>
+                    <Row>{user?.hostel_id}</Row>
+                    <Row>{user?.resident_room}</Row>
+                    <Row>{user?.resident_address}</Row>
+                    <Row>{user?.email}</Row>
+                    <Row>{user?.contact}</Row>
+                </Col>
+
+
+            </Row>
+            <Row justify="center">
+                <Col span={6} justify="center">
+                    <Button
+                        type="primary"
+                        htmlType="submit"
+                        onClick={onFinish}
+                    >
+                        Log out
+                    </Button>
+                </Col>
             </Row>
         </div>
     )
 }
 
-export default Faculty;
+export default Profile;

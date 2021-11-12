@@ -1,24 +1,37 @@
 
 import { Button, Col, Input,  Row, Typography, Form, message } from "antd";
-import React, { useCallback, useState } from "react";
-
+import React, {  useState } from "react";
+import { getToken } from "./auth"
 
 export default function Complain() {
     const { Text } = Typography;
     const [form] = Form.useForm();
-  const onFinish = async (values) => {
-    try {
-      console.log(values);
-
-      message.success("We will get back to you as soon as possible!", 5)
+    const accessToken = getToken();
+    const [Reason, setReason] = useState('');
+    console.log(accessToken);
+    const onFinish = (e) => {
+        e.preventDefault();
+        try {
+            const body = {Reason};
+            const response = fetch("http://localhost:5000/api/complain",{
+                method: "POST",
+                headers: {
+                    "Content-Type" : "application/json",
+                    "Authorization" : `Bearer ${accessToken}`
+                },
+                body: JSON.stringify(body)
+            });
+            console.log(response);
+            message.success("We will get back to you as soon as possible!", 5)
+        } catch (error) {
+            console.error(error);
+            message.error("There was some error, while posting your request", 2);
+        }
+        finally {
+          form.resetFields();
+        }
     }
-    catch (err) {
-      message.error("There was some error, while posting your request", 2);
-    }
-    finally {
-      form.resetFields();
-    }
-  }
+  
   return (
     <div className="h-auto mt-10">
       
