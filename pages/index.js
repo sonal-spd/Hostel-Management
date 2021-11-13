@@ -17,6 +17,5 @@ const Home = () => {
   );
 };
 
-Home.Layout = WebLayout;
 
 export default Home;
