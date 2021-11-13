@@ -1,7 +1,7 @@
 import { Row, Col, Typography, Image, message } from "antd";
 import { useState } from "react";
 import { getToken } from "./auth";
-
+import { useEffect } from "react";
 function Faculty() {
 
     const { Text } = Typography;
