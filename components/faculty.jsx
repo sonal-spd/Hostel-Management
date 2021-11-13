@@ -58,17 +58,17 @@ function Faculty() {
                 >
                     <div className='pb-6' >
                         <Image
-                            src={faculty.fac_photo}
+                            src={faculty?.fac_photo}
                             
                             height = {300}
                         />
-                        <Row className='flex items-center text-2xl' span={6}>{faculty.designation}</Row>
-                        <Row className='flex items-center ' span = {6}>{faculty.fac_name}</Row>
+                        <Row className='flex items-center text-2xl' span={6}>{faculty?.designation}</Row>
+                        <Row className='flex items-center ' span = {6}>{faculty?.fac_name}</Row>
                         <Row className='flex items-center ' span = {6}>
-                            {faculty.fac_email}
+                            {faculty?.fac_email}
                         </Row>
                         <Row className='flex items-center' span = {6}>
-                            {faculty.fac_contact}
+                            {faculty?.fac_contact}
                         </Row>
 
 
