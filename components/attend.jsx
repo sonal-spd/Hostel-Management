@@ -50,9 +50,8 @@ const Attendance = () => {
                     </Text>
                 </Col>
             </Row>
+            <div>
             <Row
-                className='absolute w-full'
-                style={{ height: '40vh', transform: 'translateY(-100%)' }}
                 justify='center'
                 align='middle'
             >
@@ -64,7 +63,7 @@ const Attendance = () => {
                     >Mark Attendance</Button>
                 </Col>
             </Row>
-
+                    </div>
         </div>
     )
 }
