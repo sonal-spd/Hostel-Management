@@ -21,13 +21,13 @@ const Footer = () => {
     //     }),
     //   }
     // );
-    if(result.status === 200) {
+    // if(result.status === 200) {
       message.success("You have successfully subscribed to our updates", 3)
-    }
-    else{
-      message.info("You failed to register for the newsletter. Please try again later.", 3)
-      console.log(result)
-    }
+    // }
+    // else{
+    //   message.info("You failed to register for the newsletter. Please try again later.", 3)
+    //   console.log(result)
+    // }
 
     form.resetFields();
   };

@@ -2,9 +2,9 @@
 import {  Drawer } from "antd";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
+import Router from "next/router";
 import { FiAlignLeft } from "react-icons/fi";
-
+import { removeUserSession } from "./auth";
 
 const LeftMenu = () => {
   const [visible, setVisible] = useState(false);
@@ -182,7 +182,7 @@ const LeftMenu = () => {
                 style={{ borderBottom: "1px solid #A0AEC0" }}
                 className="pt-5 pb-5"
               >
-                <Link >
+                
                   <a
                     style={{ fontSize: 18 }}
                     className="flex align-center disable"
@@ -191,7 +191,7 @@ const LeftMenu = () => {
                     
                     Log Out
                   </a>
-                </Link>
+               
               </li>
         </ul>
       </Drawer>

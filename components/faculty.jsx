@@ -2,11 +2,13 @@ import { Row, Col, Typography, Image, message } from "antd";
 import { useState } from "react";
 import { getToken } from "./auth";
 import { useEffect } from "react";
+import axios from "axios";
+import { data } from "autoprefixer";
 function Faculty() {
 
     const { Text } = Typography;
     const token = getToken();
-    const [faculty,setfaculty] = useState()
+    const [faculty,setfaculty] = useState([])
     useEffect(() => 
         {
             axios.get('http://localhost:5000/api/faculty',{
@@ -48,7 +50,8 @@ function Faculty() {
 
             <Row gutter={[16, 16]} className='flex pt-4' dir='ltr' justify="center">
 
-                <Col
+                {faculty?.map( fac =>{
+                return(<Col
 
 
                     className='cursor-pointer'
@@ -58,22 +61,22 @@ function Faculty() {
                 >
                     <div className='pb-6' >
                         <Image
-                            src={faculty?.fac_photo}
+                            src={fac?.fac_photo}
                             
                             height = {300}
                         />
-                        <Row className='flex items-center text-2xl' span={6}>{faculty?.designation}</Row>
-                        <Row className='flex items-center ' span = {6}>{faculty?.fac_name}</Row>
+                        <Row className='flex items-center text-2xl' span={6}>{fac?.designation}</Row>
+                        <Row className='flex items-center ' span = {6}>{fac?.fac_name}</Row>
                         <Row className='flex items-center ' span = {6}>
-                            {faculty?.fac_email}
+                            {fac?.fac_email}
                         </Row>
                         <Row className='flex items-center' span = {6}>
-                            {faculty?.fac_contact}
+                            {fac?.fac_contact}
                         </Row>
 
 
                     </div>
-                </Col>
+                </Col>)})}
 
             </Row>
         </div>

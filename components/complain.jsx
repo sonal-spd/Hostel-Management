@@ -7,12 +7,12 @@ export default function Complain() {
     const { Text } = Typography;
     const [form] = Form.useForm();
     const accessToken = getToken();
-    const [Reason, setReason] = useState('');
-    console.log(accessToken);
-    const onFinish = (e) => {
-        e.preventDefault();
+    const [app_reason, setapp_reason] = useState('');
+    
+    const onFinish = () => {
+        
         try {
-            const body = {Reason};
+            const body = {app_reason};
             const response = fetch("http://localhost:5000/api/complain",{
                 method: "POST",
                 headers: {
@@ -23,14 +23,14 @@ export default function Complain() {
             });
             console.log(response);
             message.success("We will get back to you as soon as possible!", 5)
+            
         } catch (error) {
             console.error(error);
             message.error("There was some error, while posting your request", 2);
         }
-        finally {
-          form.resetFields();
-        }
+        console.log(app_reason);
     }
+    
   
   return (
     <div className="h-auto mt-10">
@@ -114,6 +114,7 @@ export default function Complain() {
               <Input
                 className="border-none text-xl"
                 placeholder="Complaint"
+                onChange={e=>setapp_reason(e.target.value)}
                 style={{
                   height: 120,
                   marginBottom: 14,

@@ -7,16 +7,16 @@ import { useState } from "react";
 export default function Leave() {
     const { Text } = Typography;
     const [form] = Form.useForm();
-    const [Reason, setReason] = useState("");
-    const [Address, setAddress] = useState("");
-    const [Leave, setLeave] = useState("");
-    const [Arrival, setArrival] = useState("");
+    const [reason, setreason] = useState("");
+    const [address_, setaddress_] = useState("");
+    const [leave_date, setleave_date] = useState("");
+    const [arrival_date, setarrival_date] = useState("");
 
     const onFinish = e => {
         const accessToken = getToken()
-        e.preventDefault();
+        
         try {
-            const body = { Reason, Address, Leave, Arrival };
+            const body = { reason, address_, leave_date, arrival_date };
             const response = fetch("http://localhost:5000/api/leave", {
                 method: "POST",
                 headers: {
@@ -32,14 +32,20 @@ export default function Leave() {
             message.error("There was some error, while posting your request", 2);
 
         }
-        finally {
-            form.resetFields();
-        }
+        
+        
     }
 
-    const onChange = async (date, dateString) => {
-        console.log(date, dateString);
+    const onleave = async (date, dateString) => {
+       
+         console.log(dateString);
+            setleave_date(dateString)
     };
+    const onarrival = async (date, dateString) => {
+       
+        console.log(dateString);
+           setarrival_date(dateString)
+   };
     return (
         <div className="h-auto mt-10">
 
@@ -123,6 +129,7 @@ export default function Leave() {
                             <Input
                                 className="border-none text-xl"
                                 placeholder="Address"
+                                onChange={e=>setaddress_(e.target.value)}
                                 style={{
                                     height: 80,
                                     marginBottom: 14,
@@ -141,6 +148,7 @@ export default function Leave() {
                             <Input
                                 className="border-none text-xl"
                                 placeholder="Reason"
+                                onChange={e=>setreason(e.target.value)}
                                 style={{
                                     height: 80,
                                     marginBottom: 14,
@@ -163,7 +171,8 @@ export default function Leave() {
                                     borderRadius: "15px",
                                 }}
                                 placeholder="Leave Date"
-                                onChange={onChange} />
+                                onChange={onleave}
+                                 />
 
                         </Form.Item>
                         <Form.Item
@@ -178,7 +187,7 @@ export default function Leave() {
                                     borderRadius: "15px",
                                 }}
                                 placeholder="Arrival Date"
-                                onChange={onChange} />
+                                onChange={onarrival} />
 
                         </Form.Item>
                         <Form.Item>
