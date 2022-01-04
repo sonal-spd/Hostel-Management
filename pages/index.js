@@ -1,20 +1,18 @@
+
 import Head from "next/head";
-import Footer from "../components/footer";
-import Header from "../components/header";
-import Notice from "../components/Notice";
+import Login from "../components/login";
 
-const Home = () => {
-  return (
-    <>
-      <Head>
-        <title>Hour</title>
-      </Head>
-      <Header/>
-      <Notice/>
-     <Footer/>
-    </>
-  );
-};
+function login() {
+    return (
+        <>
+        <Head>
+            <title>Hour</title>
+        </Head>
+        <div className="py-10" style={{ minHeight: "70vh" }}>
+            <Login />
+        </div>
+        </>
+    )
+}
 
-
-export default Home;
+export default login

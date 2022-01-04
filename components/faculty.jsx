@@ -36,20 +36,10 @@ function Faculty(props) {
     return (
         <div className="h-auto mt-10">
 
-            <Row
-                className="w-full bg-fixed bg-cover bg-no-repeat bg-center relative"
-                style={{
-
-                    height: "40vh",
-                    backgroundSize: "cover",
-                    filter: "brightness(50%)",
-                }}
-                justify="center"
-                align="middle"
-            ></Row>
+            
             <Row
                 className='absolute w-full'
-                style={{ height: '40vh', transform: 'translateY(-100%)' }}
+                style={{ height: '20vh', transform: 'translateY(-100%)' }}
                 justify='center'
                 align='middle'
             >
@@ -59,6 +49,11 @@ function Faculty(props) {
                     </Text>
                 </Col>
             </Row>
+            <Row span = {12} justify = "center">
+                    <Text level={1} strong className='block text-white text-6xl font-bold'>
+                        Staff
+                    </Text>
+                </Row>
             <div className='pb-20 pt-4 w-4/5 mx-auto'>
                 {faculty.map(fac => {
                     return (
@@ -95,8 +90,13 @@ function Faculty(props) {
                     )
                 })}
             </div>
-
+            <Row span = {12} justify = "center">
+                    <Text level={1} strong className='block text-white text-6xl font-bold'>
+                        Proctor Team
+                    </Text>
+                </Row>
             <div className='pb-20 pt-4 w-4/5 mx-auto'>
+            
                 {proc.map(proc => {
                     return (
                         <Card style={{ width: 300, justify: "center" }} >

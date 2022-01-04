@@ -17,7 +17,7 @@ function Profile(props) {
                 className="w-full bg-fixed bg-cover bg-no-repeat bg-center relative"
                 style={{
 
-                    height: "40vh",
+                    height: "20vh",
                     backgroundSize: "cover",
                     filter: "brightness(50%)",
                 }}
@@ -26,7 +26,7 @@ function Profile(props) {
             ></Row>
             <Row
                 className='absolute w-full'
-                style={{ height: '40vh', transform: 'translateY(-100%)' }}
+                style={{ height: '20vh', transform: 'translateY(-100%)' }}
                 justify='center'
                 align='middle'
             >

@@ -20,7 +20,7 @@ const LeftMenu = () => {
   };
   const handleLogout = () => {
     removeUserSession();
-    Router.push('/login');
+    Router.push('/');
 }
   const allFalse = () => {
     setXs(false);
@@ -106,7 +106,7 @@ const LeftMenu = () => {
             style={{ borderBottom: "1px solid #A0AEC0" }}
             className="pt-5 pb-5"
           >
-            <Link href="/">
+            <Link href="/notice">
               <a
                 style={{ fontSize: 18 }}
                 className="flex align-center"

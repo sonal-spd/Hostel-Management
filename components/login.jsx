@@ -86,7 +86,7 @@ const Login = (props) => {
                 className="mt-2 py-2"
               />
             </Form.Item>
-            <p style={{ color: "purple" }}>Forgot Password</p>
+         
             <Form.Item>
               <Row justify="center">
                 <Col span={6} justify="center">

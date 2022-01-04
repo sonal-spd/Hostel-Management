@@ -6,8 +6,8 @@ const Attendance = () => {
     const { Text } = Typography;
     const accessToken = getToken();
     console.log(accessToken);
-    const postAttendance = e => {
-        e.preventDefault();
+    const postAttendance = () => {
+        
         console.log(accessToken);
         try {
             const response = fetch("http://localhost:5000/api/attendance", {
